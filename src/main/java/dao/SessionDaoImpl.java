@@ -30,14 +30,14 @@ public class SessionDaoImpl implements SessionDao {
 
 		try {
 
-			String query1 = "Insert into session (date_debut , date_fin , nb_participant) values (? , ? , ?)";
+			String query1 = "Insert into session (date_debut , date_fin , nb_participants) values (? , ? , ?)";
 			pst1 = connection.prepareStatement(query1);
 			
 			pst1.setDate(1, UtilDate.changeDate(session.getDateDebut()));
 			pst1.setDate(2, UtilDate.changeDate(session.getDateFin()));
 			pst1.setInt(3, session.getNbParticipant());
 
-			nblignesExecutees = pst1.executeUpdate(query1);
+			nblignesExecutees = pst1.executeUpdate();
 
 			pst1.close();
 
@@ -64,7 +64,7 @@ public class SessionDaoImpl implements SessionDao {
 				Integer id = result2.getInt("id");
 				Date dateDebut = result2.getDate("date_debut");
 				Date dateFin = result2.getDate("date_fin");
-				Integer nbParticipant = result2.getInt("nombre_participants");
+				Integer nbParticipant = result2.getInt("nb_participants");
 
 				listSession.add(new Session (id, dateDebut, dateFin,nbParticipant));	
 			}
@@ -93,7 +93,7 @@ public class SessionDaoImpl implements SessionDao {
 				Integer idSession = result3.getInt("id");
 				Date dateDebut = result3.getDate("date_debut");
 				Date dateFin = result3.getDate("date_fin");
-				Integer nbParticipant = result3.getInt("nombre_participants");
+				Integer nbParticipant = result3.getInt("nb_participants");
 
 
 				session  = (new Session (idSession, dateDebut, dateFin, nbParticipant));
@@ -130,7 +130,7 @@ public class SessionDaoImpl implements SessionDao {
 
 		try {
 
-			String query5 = "Update session Set date_debut= ? , date_fin = ?, nombre_participants= ? where id= ?"; 
+			String query5 = "Update session Set date_debut= ? , date_fin = ?, nb_participants= ? where id= ?"; 
 			
 			pst5 = connection.prepareStatement(query5);
 
