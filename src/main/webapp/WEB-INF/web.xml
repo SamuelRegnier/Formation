@@ -21,13 +21,13 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>CreationClassroomServlet</display-name>
-    <servlet-name>CreationClassroomServlet</servlet-name>
-    <servlet-class>controller.classroom.CreationClassroomServlet</servlet-class>
+    <display-name>CreationClassroom</display-name>
+    <servlet-name>CreationClassroom</servlet-name>
+    <servlet-class>controller.classroom.CreationClassroom</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CreationClassroomServlet</servlet-name>
-    <url-pattern>/CreationClassroomServlet</url-pattern>
+    <servlet-name>CreationClassroom</servlet-name>
+    <url-pattern>/CreationClassroom</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
@@ -78,5 +78,45 @@
   <servlet-mapping>
     <servlet-name>CreationEvaluationServlet</servlet-name>
     <url-pattern>/CreationEvaluationServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllClassroom</display-name>
+    <servlet-name>GetAllClassroom</servlet-name>
+    <servlet-class>controller.classroom.GetAllClassroom</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllClassroom</servlet-name>
+    <url-pattern>/GetAllClassroom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertedClassroom</display-name>
+    <servlet-name>InsertedClassroom</servlet-name>
+    <servlet-class>controller.classroom.InsertedClassroom</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertedClassroom</servlet-name>
+    <url-pattern>/InsertedClassroom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateClassroom</display-name>
+    <servlet-name>UpdateClassroom</servlet-name>
+    <servlet-class>controller.classroom.UpdateClassroom</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateClassroom</servlet-name>
+    <url-pattern>/UpdateClassroom</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteClassroom</display-name>
+    <servlet-name>DeleteClassroom</servlet-name>
+    <servlet-class>controller.classroom.DeleteClassroom</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteClassroom</servlet-name>
+    <url-pattern>/DeleteClassroom</url-pattern>
   </servlet-mapping>
 </web-app>
