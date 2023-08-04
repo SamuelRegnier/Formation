@@ -10,7 +10,21 @@ public class Training {
 	private Integer prix;
 	private String description;
 	
+	public Training() {
+		
+	}
 	
+	public Training(String nom, Integer duree, Integer nbParticipants, Boolean certifiante,
+			Boolean prerequis, Integer prix, String description) {
+		super();
+		this.nom = nom;
+		this.duree = duree;
+		this.nbParticipants = nbParticipants;
+		this.certifiante = certifiante;
+		this.prerequis = prerequis;
+		this.prix = prix;
+		this.description = description;
+	}
 	
 	public Training(Integer id, String nom, Integer duree, Integer nbParticipants, Boolean certifiante,
 			Boolean prerequis, Integer prix, String description) {
@@ -25,8 +39,6 @@ public class Training {
 		this.description = description;
 	}
 	
-	public Training() {
-	}
 	
 	//GETTERS-SETTERS:
 	

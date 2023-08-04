@@ -26,20 +26,18 @@ public class TrainingDaoImpl implements TrainingDao {
 		int nbLignesExecutees = 0;
 		
 		try {
-			String query = "insert into training(id, nom, duree, nb_participants, certifiante, prerequis, prix, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = "insert into training(nom, duree, nb_Participants, certifiante, prerequis, prix, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	        PreparedStatement ps = connection.prepareStatement(query);
-		    ps.setInt(1, training.getId());
-		    ps.setString(2, training.getNom());
-		    ps.setInt(3, training.getDuree());
-		    ps.setInt(4, training.getNbParticipants());
-		    ps.setBoolean(5, training.getCertifiante());
-		    ps.setBoolean(6, training.getPrerequis());
-		    ps.setInt(7, training.getPrix());
-		    ps.setString(8, training.getDescription());
+		    
+		    ps.setString(1, training.getNom());
+		    ps.setInt(2, training.getDuree());
+		    ps.setInt(3, training.getNbParticipants());
+		    ps.setBoolean(4, training.getCertifiante());
+		    ps.setBoolean(5, training.getPrerequis());
+		    ps.setInt(6, training.getPrix());
+		    ps.setString(7, training.getDescription());
 		    
 		    nbLignesExecutees = ps.executeUpdate();
-		    ps.close();
-		    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -61,7 +59,7 @@ public class TrainingDaoImpl implements TrainingDao {
 				Integer id = result.getInt("id");
 				String nom = result.getString("nom");
 				Integer duree = result.getInt("duree");
-				Integer nbParticipants = result.getInt("nb_participants");
+				Integer nbParticipants = result.getInt("nb_Participants");
 				Boolean certifiante = result.getBoolean("certifiante");
 				Boolean prerequis = result.getBoolean("prerequis");
 				Integer prix = result.getInt("prix");
@@ -99,6 +97,7 @@ public class TrainingDaoImpl implements TrainingDao {
 		        training.setPrix(rs.getInt("prix"));
 		        training.setDescription(rs.getString("description"));
 		    }
+		    return training;
 
 		} catch (Exception e){
 			e.printStackTrace();
@@ -123,6 +122,7 @@ public class TrainingDaoImpl implements TrainingDao {
 		    ps.setBoolean(5, training.getPrerequis());
 		    ps.setInt(6, training.getPrix());
 		    ps.setString(7, training.getDescription());
+		    ps.setInt(8, training.getId());
 		    ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

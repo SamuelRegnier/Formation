@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Evaluation;
+import entity.Training;
 
 public class EvaluationDaoImpl implements EvaluationDao {
 
 	
 	private Connection connection;
-	
+	protected TrainingDao trainingDao = new TrainingDaoImpl(connection);
 	
 	public EvaluationDaoImpl(Connection connection) {
 		this.connection = connection;
@@ -24,14 +25,16 @@ public class EvaluationDaoImpl implements EvaluationDao {
 		int nbLignesExecutees = 0;
 		
 		try {
-			String query = "insert into evaluation(id, note, commentaires) VALUES (?, ?, ?)";
+			
+			String query = "insert into evaluation(note, commentaires, id_training) VALUES (?, ?, ?)";
 	        PreparedStatement ps = connection.prepareStatement(query);
-		    ps.setInt(1, evaluation.getId());
-		    ps.setInt(2, evaluation.getNote());
-		    ps.setString(3, evaluation.getCommentaires());
+		    
+		    ps.setInt(1, evaluation.getNote());
+		    ps.setString(2, evaluation.getCommentaires());
+		    ps.setInt(3, evaluation.getIdTraining().getId());
+		    
 		    
 		    nbLignesExecutees = ps.executeUpdate();
-		    ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -50,13 +53,13 @@ public class EvaluationDaoImpl implements EvaluationDao {
 			ResultSet result = statement.executeQuery(query);
 			
 			while(result.next()) {
-				Integer id = result.getInt("id");
 				Integer note = result.getInt("note");
 				String commentaires = result.getString("commentaires");
+				Training idTraining = trainingDao.get(result.getInt("id_training"));
 				
-				listEvaluation.add(new Evaluation(id, note, commentaires));
+				listEvaluation.add(new Evaluation(note, commentaires, idTraining));
 			}
-			statement.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -69,18 +72,21 @@ public class EvaluationDaoImpl implements EvaluationDao {
 		Evaluation evaluation = null;
 
 		try {
-	        String query = "select * from evaluation where id=" + id;
-	        Statement ps = connection.createStatement();
+	        String query = "select * from evaluation where id= ?";
+	        PreparedStatement ps = connection.prepareStatement(query);
+
+		    ps.setInt(1, id);
 		    
-		    ResultSet rs = ps.executeQuery(query);
+		    ResultSet rs = ps.executeQuery();
 
 		    while (rs.next()) {
-		        Integer id1 = rs.getInt("id");
+		        
 		        Integer note = rs.getInt("note");
 		        String commentaires = rs.getString("commentaires");
-		        evaluation = new Evaluation(id1,note,commentaires);
+		        Training idTraining = trainingDao.get(rs.getInt("id_training"));
+		        evaluation = new Evaluation(note,commentaires,idTraining);
 		    }
-		    ps.close();
+		    
 		} catch (Exception e){
 			e.printStackTrace();
 		}
@@ -97,7 +103,7 @@ public class EvaluationDaoImpl implements EvaluationDao {
 		    ps.setInt(1, evaluation.getNote());
 		    ps.setString(2, evaluation.getCommentaires());
 		    ps.executeUpdate();
-		    ps.close();
+		    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -111,7 +117,6 @@ public class EvaluationDaoImpl implements EvaluationDao {
 	        PreparedStatement ps = connection.prepareStatement(query);
 			ps.setInt(1, evaluation.getId());
 			ps.executeUpdate();
-			ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
