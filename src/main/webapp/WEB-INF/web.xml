@@ -79,4 +79,44 @@
     <servlet-name>CreationEvaluationServlet</servlet-name>
     <url-pattern>/CreationEvaluationServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AffichageUserServlet</display-name>
+    <servlet-name>AffichageUserServlet</servlet-name>
+    <servlet-class>controller.user.AffichageUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AffichageUserServlet</servlet-name>
+    <url-pattern>/AffichageUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AffichageIdUserServlet</display-name>
+    <servlet-name>AffichageIdUserServlet</servlet-name>
+    <servlet-class>controller.user.AffichageIdUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AffichageIdUserServlet</servlet-name>
+    <url-pattern>/AffichageIdUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificationUserServlet</display-name>
+    <servlet-name>ModificationUserServlet</servlet-name>
+    <servlet-class>controller.user.ModificationUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificationUserServlet</servlet-name>
+    <url-pattern>/ModificationUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SuppressionUserServlet</display-name>
+    <servlet-name>SuppressionUserServlet</servlet-name>
+    <servlet-class>controller.user.SuppressionUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuppressionUserServlet</servlet-name>
+    <url-pattern>/SuppressionUserServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

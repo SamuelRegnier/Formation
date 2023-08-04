@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Suppression Utilisateur</title>
 </head>
 <body>
-
+	<h1>L'utilisateur ${user.nom} ${user.prenom} a été supprimé avec succès</h1>
+	<a href="/ProjetFilRouge/users">Valider</a>
 </body>
 </html>
